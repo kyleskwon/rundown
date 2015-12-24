@@ -21,7 +21,7 @@ class RegisteredApplicationsController < ApplicationController
 
   # POST /registered_applications
   def create
-    @registered_application = RegisteredApplication.new(registered_application_params)
+    @registered_application = current_user.registered_applications.new(registered_application_params)
 
     if @registered_application.save
       redirect_to @registered_application, notice: 'Registered application was successfully created.'
