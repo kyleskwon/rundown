@@ -1,4 +1,4 @@
-10.times do
+5.times do
   User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password(8, 10)
@@ -23,5 +23,6 @@ registered_applications = RegisteredApplication.all
 end
 
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{RegisteredApplication.count} registered applications created"
 puts "#{Event.count} events created"
