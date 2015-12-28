@@ -1,8 +1,11 @@
 5.times do
-  User.create!(
+  user = User.new(
     email: Faker::Internet.email,
-    password: Faker::Internet.password(8, 10)
+    password: Faker::Internet.password(8, 10),
+    username: Faker::Lorem.word
   )
+  user.skip_confirmation!
+  user.save!
 end
 users = User.all
 
@@ -17,8 +20,8 @@ registered_applications = RegisteredApplication.all
 
 5.times do
   Event.create!(
-    registered_application: registered_applications.sample
-    name: Faker::Lorem.sentence,
+    registered_application: registered_applications.sample,
+    name: Faker::Lorem.sentence
   )
 end
 
