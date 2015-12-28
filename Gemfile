@@ -26,5 +26,5 @@ source 'https://rubygems.org'
  gem 'turbolinks'
 
  gem 'figaro'
-
+ gem 'faker'
  gem 'rspec-rails'
