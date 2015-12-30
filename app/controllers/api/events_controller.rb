@@ -1,6 +1,7 @@
 class API::EventsController < ApplicationController
    skip_before_action :verify_authenticity_token
    before_filter :set_access_control_headers
+   skip_before_action :authenticate_user!
 
    def set_access_control_headers
      headers['Access-Control-Allow-Origin'] = '*'
@@ -15,20 +16,22 @@ class API::EventsController < ApplicationController
        render json: "Unregistered application", status: :unprocessable_entity
      end
 
+     @event = registered_application.events.new(event_params)
      if @event.save
        render json: @event, status: :created
      else
        render @event.errors, status: :unprocessable_entity
+     end
    end
 
    def preflight
      head 200
    end
 
-private
+   private
 
   def event_params
     params.require(:event).permit(:name)
   end
-  
+
 end
