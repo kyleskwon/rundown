@@ -4,6 +4,11 @@ source 'https://rubygems.org'
  gem 'rails', '4.2.5'
  gem 'devise'
  gem 'bootstrap-sass'
+ gem 'figaro'
+ gem 'faker'
+ gem 'rspec-rails'
+ gem 'chartkick'
+ gem 'groupdate'
 
  group :production do
    gem 'pg'
@@ -24,7 +29,3 @@ source 'https://rubygems.org'
  gem 'jquery-rails'
  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
  gem 'turbolinks'
-
- gem 'figaro'
- gem 'faker'
- gem 'rspec-rails'
