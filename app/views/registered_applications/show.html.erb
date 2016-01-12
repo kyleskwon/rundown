@@ -1,4 +1,4 @@
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
 
 <p>
   <strong>User:</strong>
@@ -16,8 +16,9 @@
 </p>
 
 <%= pie_chart @registered_application.events.group(:name).count %>
-
-<%= line_chart @registered_application.events.group_by_day(:created_at).count %>
+<% unless Rails.env.development? %>
+  <%= line_chart @registered_application.events.group_by_day(:created_at).count %>
+<% end %>
 
 <%= link_to 'Edit', edit_registered_application_path(@registered_application) %> |
 <%= link_to 'Back', registered_applications_path %>
